@@ -94,3 +94,14 @@ button:hover{
 	text-align: center;
 	margin-top: 25px;
 }
+.pass_div{
+	display: flex;
+	position: relative;
+}
+.pass_icon{
+	position: absolute;
+	top: 40%;
+	right: 20%;
+	cursor: pointer;
+	font-size: 18px
+}

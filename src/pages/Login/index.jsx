@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Login() {
     const [error, errorMessage] = useState(false);
     const [message, setMessage] = useState('');
-    
+    const [showPassword, setShowPassword] = useState(false);
 
     const username = useRef("");
     const password = useRef("");
@@ -43,8 +44,10 @@ function Login() {
         <label htmlFor="chk" aria-hidden="true">
           Login
         </label>
-        <input ref={username} type="text" name="text" placeholder="Username" required/>
-        <input ref={password} type="password" name="pswd" placeholder="Password" required/>
+        <input ref={username} minLength={8} type="text" name="text" placeholder="Username" required/>
+        <div className="pass_div">
+        <input ref={password} minLength={8} type={showPassword ? "text" : "password"} name="pswd" placeholder="Password" required/> { showPassword ? <FaEye onClick={() => setShowPassword((prev) => !prev)} className="pass_icon"/> : <FaEyeSlash onClick={() => setShowPassword((prev) => !prev)} className="pass_icon"/>}
+        </div>
         <button type="submit">Login</button>
         {error && <h6 className="error-text">{message}</h6>}
       </form>
